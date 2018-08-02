@@ -80,6 +80,7 @@
         </a>
       </li>
     </ul>
+    <button @click="post">提交</button>
   </div>
 </template>
 
@@ -96,11 +97,31 @@ export default {
   created () {
     axios.get('http://localhost:3000/api/hero')
       .then(response => {
-          console.log(response,'111')
+          console.log(response,'获取成功')
       })
       .catch(error => {
           console.log(error)
       })
+  },
+  methods: {
+      post(){
+        axios.post('http://localhost:3000/api/hero',{
+              name :'德玛西亚',
+              age : 22,
+              sex : 'man',
+              address : 'sdfsdfs',
+              dowhat : '中单、刺客',
+              imgArr: ["http://ossweb-img.qq.com/images/lol/web201310/skin/big157000.jpg", "http://ossweb-img.qq.com/images/lol/web201310/skin/big157001.jpg", "http://ossweb-img.qq.com/images/lol/web201310/skin/big157002.jpg"],
+              favourite:'dfsadf',
+              explain:'sdfsdf'
+          })
+          .then(response => {
+              console.log(response,'添加成功')
+          })
+          .catch(error => {
+              console.log(error)
+          })
+      }
   }
 }
 </script>

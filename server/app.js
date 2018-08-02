@@ -2,11 +2,21 @@
 
 //1.引入express模块
 const express = require('express')
+
+// 请求中间件
+var bodyParser = require('body-parser');
+
 //2.创建app对象
 const app = express()
 
 //引入刚才定义的hero路由
 const hero = require('./router/hero')
+
+// 解析 application/json
+app.use(bodyParser.json());	
+// 解析 application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded());
+
 
 //跨域设置
 app.all('*',(req,res,next)=>{
