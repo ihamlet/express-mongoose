@@ -11,6 +11,7 @@ const app = express()
 
 //引入刚才定义的hero路由
 const hero = require('./router/hero')
+const reg = require('./router/register')
 
 // 解析 application/json
 app.use(bodyParser.json());	
@@ -27,7 +28,8 @@ app.all('*',(req,res,next)=>{
 })
 
 // 配置api路由
-app.use('/api',hero)
+app.use('/api', hero)
+app.use('/reg', reg)
 
 //定义简单路由
 app.use('/',(req,res) => {

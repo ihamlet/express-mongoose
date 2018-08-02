@@ -82,6 +82,11 @@
     </ul>
     <button @click="Post">提交</button>
     <button @click="Delete">删除</button>
+
+    <input type="number" placeholder="请输入手机" v-model="phone"/>
+    <input type="text" placeholder="请输入密码" v-model="password"/>
+
+    <button @click="reg">注册</button>
   </div>
 </template>
 
@@ -92,7 +97,9 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      phone:'',
+      password:''
     }
   },
   created () {
@@ -124,9 +131,21 @@ export default {
           })
       },
       Delete(){
-          axios.delete('http://localhost:3000/api/hero/5b6277c87113c6dfd5bdfc42')
+          axios.post('http://localhost:3000/api/hero/5b6277c87113c6dfd5bdfc42')
           .then(response => {
               console.log('删除成功')
+          })
+          .catch(error => {
+              console.log(error)
+          })
+      },
+      reg(){
+        axios.post('http://localhost:3000/reg/register',{
+              phone: this.phone,
+              password: this.password
+        })
+          .then(response => {
+              console.log(response,'注册成功')
           })
           .catch(error => {
               console.log(error)
