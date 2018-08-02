@@ -145,10 +145,10 @@ export default {
               password: this.password
         })
           .then(response => {
-              console.log(response,'注册成功')
+                console.log(response,'注册成功')
           })
           .catch(error => {
-              console.log(error)
+              console.log(response,error)
           })
       }
   }
