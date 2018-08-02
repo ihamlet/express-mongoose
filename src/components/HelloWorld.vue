@@ -80,7 +80,8 @@
         </a>
       </li>
     </ul>
-    <button @click="post">提交</button>
+    <button @click="Post">提交</button>
+    <button @click="Delete">删除</button>
   </div>
 </template>
 
@@ -104,7 +105,7 @@ export default {
       })
   },
   methods: {
-      post(){
+      Post(){
         axios.post('http://localhost:3000/api/hero',{
               name :'德玛西亚',
               age : 22,
@@ -117,6 +118,15 @@ export default {
           })
           .then(response => {
               console.log(response,'添加成功')
+          })
+          .catch(error => {
+              console.log(error)
+          })
+      },
+      Delete(){
+          axios.delete('http://localhost:3000/api/hero/5b6277c87113c6dfd5bdfc42')
+          .then(response => {
+              console.log('删除成功')
           })
           .catch(error => {
               console.log(error)

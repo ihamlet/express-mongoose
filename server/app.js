@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 // 解析 application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded());
 
-
 //跨域设置
 app.all('*',(req,res,next)=>{
     res.header("Access-Control-Allow-Origin", "*");
