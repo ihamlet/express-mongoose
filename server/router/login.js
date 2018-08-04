@@ -12,18 +12,12 @@ router.post("/", (req, res, next) => {
     md5.update(password + phone)
     const pwd = md5.digest('base64')
 
-    User.findOne({phone: phone},(err, doc)=>{
+    User.findOne({phone: phone, password: pwd},(err, doc)=>{
         if (err) return next(err)
-        if (!doc) {
-            User.create({phone: phone,password: pwd}, (err, doc) => {
-                if(err){
-                    res.send({code: 500, warning:'注册失败'})
-                }else{
-                    res.send({code: 200, warning:'注册成功'})
-                }
-            })
+        if (doc) {
+            res.send({code: 200, warning:'登陆成功'})
         } else {
-            res.send({code: 409, warning:'账号已被注册'})
+            res.send({code: 400, warning:'请检查用户名密码'})
         }
     })
 })
