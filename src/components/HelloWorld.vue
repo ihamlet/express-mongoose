@@ -115,7 +115,7 @@ export default {
   },
   methods: {
       Post(){
-        axios.post('http://localhost:3000/api/hero',{
+          axios.post('http://localhost:3000/api/hero',{
               name :'德玛西亚',
               age : 22,
               sex : 'man',
@@ -142,10 +142,10 @@ export default {
           })
       },
       reg(){
-        axios.post('http://localhost:3000/reg/',{
-              phone: this.phone,
-              password: this.password
-        })
+          axios.post('http://localhost:3000/reg/',{
+                phone: this.phone,
+                password: this.password
+          })
           .then(response => {
                 console.log(response,'注册')
           })
@@ -154,10 +154,10 @@ export default {
           })
       },
       login(){
-        axios.post('http://localhost:3000/login/',{
-              phone: this.phone,
-              password: this.password
-        })
+          axios.post('http://localhost:3000/login/',{
+                phone: this.phone,
+                password: this.password
+          })
           .then(response => {
               console.log(response,'登陆')
           })
