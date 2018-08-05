@@ -11,6 +11,6 @@ mongoose.connect("mongodb://localhost:27017/user", {useNewUrlParser:true}, funct
 const UserSchema = new mongoose.Schema({
     phone: Number,
     password: String
-}, { collection: 'user'})
+},{ collection: 'user'})
 
 module.exports = mongoose.model('user', UserSchema)

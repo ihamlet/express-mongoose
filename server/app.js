@@ -13,10 +13,11 @@ const app = express()
 const hero = require('./router/hero')
 const register = require('./router/register')
 const login = require('./router/login')
+
 // 解析 application/json
 app.use(bodyParser.json())
 // 解析 application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //跨域设置
 app.all('*',(req,res,next)=>{

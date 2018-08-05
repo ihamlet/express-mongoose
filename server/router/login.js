@@ -1,4 +1,7 @@
 const express = require("express")
+
+const jwt = require('jsonwebtoken')
+
 const router = express.Router()
 const User = require("../models/user")
 
@@ -15,11 +18,14 @@ router.post("/", (req, res, next) => {
     User.findOne({phone: phone, password: pwd},(err, doc)=>{
         if (err) return next(err)
         if (doc) {
-            res.send({code: 200, warning:'登陆成功'})
+            let token = jwt.sign({ phone: phone }, 'shh_token', {expiresIn: '24h'})
+            res.send({code: 200, message:'登陆成功',token:token})
         } else {
-            res.send({code: 400, warning:'请检查用户名密码'})
+            res.send({code: 400, message:'请检查用户名密码'})
         }
     })
 })
+
+
 
 module.exports = router

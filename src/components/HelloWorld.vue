@@ -89,6 +89,8 @@
     <button @click="reg">注册</button>
 
      <button @click="login">登陆</button>
+
+     <button @click="TokenData">解析Token</button>
   </div>
 </template>
 
@@ -133,7 +135,7 @@ export default {
           })
       },
       Delete(){
-          axios.delete('http://localhost:3000/api/hero/5b65180cbc8a130d41deeafd')
+          axios.delete('http://localhost:3000/api/hero/5b6668fecf74e03528898b86')
           .then(response => {
               console.log('删除成功')
           })
@@ -164,6 +166,18 @@ export default {
           .catch(error => {
               console.log(response,error)
           })        
+      },
+      TokenData(){
+          axios.post('http://localhost:3000/reg/info',{
+                phone: this.phone,
+                password: this.password
+          })
+          .then(response => {
+              console.log(response,'认证')
+          })
+          .catch(error => {
+              console.log(response,error)
+          })   
       }
   }
 }
